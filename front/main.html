@@ -1,0 +1,141 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/stil.css">
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/script.js"></script>
+    <script src="public/js/graph.js"></script>
+    <script src="public/js/front.js"></script>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body onload="getKursevi()">
+    <div class="row topDiv">
+    </div>
+    <form class="mainDiv row square row-cols-lg-auto g-3 align-items-centers pt-3">
+        <div class="col-3">
+            <label class="label" for="fname">Količina:</label>
+            <div class="input-group">
+                <input id="amount" class="form-control" type="number" step="0.01" min=0.01
+                    placeholder="Količina novca" />
+            </div>
+        </div>
+
+
+        <div class="col-4">
+            <label class="label" for="from">Konverzija iz:</label>
+            <select type="textbox" form-select id="from">
+                <option value="RSD" id="rsd"> </img src="public/images/srb.svg">RSD - Srpski dinar</option>
+                <option value="USD">USD - Američki dolar</option>
+                <option selected value="EUR">EUR - Euro</option>
+                <option value="JPY">JPY - Japanski jen</option>
+            </select>
+        </div>
+
+        <div class="col-1 pt-4">
+            <img src="public/images/outline_swap_horiz_black_24dp.png" alt="swap" class="swap" onclick="swap()"></img>
+        </div>
+
+        <div class="col-4">
+            <label class="label" for="to">Konverzija u:</label>
+            <select type="textbox" class="form-select" id="to">
+                <option data-icon="srb.svg" value="RSD">RSD - Srpski dinar</option>
+                <option value="USD">USD - Američki dolar</option>
+                <option value="EUR">EUR - Euro</option>
+                <option value="JPY">JPY - Japanski jen</option>
+            </select>
+        </div>
+
+        <div class="col-8">
+            <a id="konverzijaIz"></a>
+            <br />
+            <a id="konverzijaU"></a>
+        </div>
+
+        <div class="col-4" style="text-align: right;">
+            <button type="button" class="button" id="izvrsi_konverziju" onclick="convertClick(event)">Izvrši
+                konverziju</button>
+        </div>
+    </form>
+
+    <div class="kursevi">
+        <p class="kurseviKvote">Trenutne kvote:</p>
+        <div class="kurs">
+            <img class="zastava" src="public/images/eur.svg" alt="eur">
+            <a id="kursEur">1 EUR =</a>
+        </div>
+        <br />
+        <div class="kurs">
+            <img class="zastava" src="public/images/usa.svg" alt="usa">
+            <a id="kursUsd">1 USD =</a>
+        </div>
+        <br />
+        <div class="kurs">
+            <img class="zastava" src="public/images/jpy.svg" alt="jpn">
+            <a id="kursJpy">1 JPY =</a>
+        </div>
+        <br />
+        <div class="canv">
+            <!DOCTYPE html>
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card text-center">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab"
+                                        data-target="#nav-home" role="tab" aria-controls="nav-home"
+                                        aria-selected="true">Istorijski kurs</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                                        data-target="#nav-profile" role="tab" aria-controls="nav-profile"
+                                        aria-selected="false">Volitalnost</a>
+                                </div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
+                                    <div class="card-body">
+                                        <h4>Kurs <span class="valuta">USD/EUR
+                                            </span>
+                                        </h4>
+                                        <canvas id="lineChartDateSelection"></canvas>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                    aria-labelledby="nav-profile-tab">
+
+                                    <div class="card-body">
+                                        <h4>Volitalnost <span class="valuta">USD/EUR
+                                            </span>
+                                        </h4>
+                                        <canvas id="lineChartDateSelection2"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--
+    <div class="card-body">
+                        <h4>Kurs USD/EUR</h4>
+                        <canvas id="lineChartDateSelection"></canvas>
+                    </div>
+                    
+-->
+        </div>
+    </div>
+
+</body>
+
+</html>
